@@ -1,0 +1,148 @@
+{
+  "examData": {
+    "m_junior": {
+      "title": "คลังข้อสอบระดับชั้น ม.ต้น",
+      "subtitle": "เลือกหัวข้อแบบฝึกหัดหรือชุดข้อสอบ ม.ต้น เพื่อเริ่มต้นฝึกทำโจทย์",
+      "items": [
+        {
+          "name": "ชุดข้อสอบเตรียมอุดมศึกษา 2567",
+          "meta": "จำนวน 30 ข้อ • เวลา 120 นาที",
+          "link": "https://drive.google.com/file/d/YOUR_REAL_DRIVE_LINK_1/view"
+        },
+        {
+          "name": "ชุดข้อสอบ MWIT / KOSEN",
+          "meta": "จำนวน 25 ข้อ • เวลา 90 นาที",
+          "link": "https://drive.google.com/file/d/YOUR_REAL_DRIVE_LINK_2/view"
+        },
+        {
+          "name": "แนวข้อสอบ สอวน. คณิตศาสตร์ ม.ต้น",
+          "meta": "จำนวน 20 ข้อ • เวลา 90 นาที",
+          "link": "https://drive.google.com/file/d/YOUR_REAL_DRIVE_LINK_3/view"
+        }
+      ]
+    },
+    "m_senior": {
+      "title": "คลังข้อสอบระดับชั้น ม.ปลาย",
+      "subtitle": "เลือกหัวข้อแบบฝึกหัดหรือชุดข้อสอบ ม.ปลาย เพื่อเตรียมสอบเข้ามหาวิทยาลัย",
+      "items": [
+        {
+          "name": "A-level คณิตศาสตร์ประยุกต์ 1",
+          "meta": "จำนวน 30 ข้อ • เวลา 90 นาที",
+          "link": "https://drive.google.com/drive/folders/1QA6P9VRacZHTGIe8O9PyYS2EVQzEqq6L?usp=drive_link"
+        },
+        {
+          "name": "PAT 1 ความถนัดทางคณิตศาสตร์",
+          "meta": "จำนวน 45 ข้อ • เวลา 180 นาที",
+          "link": "https://drive.google.com/drive/folders/15-_DFd3tdNUFZwJNfUGOMAep-0_hznOD?usp=drive_link"
+        },
+        {
+          "name": "วิชาสามัญคณิตศาสตร์ 1",
+          "meta": "จำนวน 30 ข้อ • เวลา 90 นาที",
+          "link": "https://drive.google.com/drive/folders/1UAxPaxyEmG9vYQxcf2a4ekRW0rPTK36E?usp=drive_link"
+        },
+        {
+          "name": "A-level คณิตศาสตร์ประยุกต์ 2",
+          "meta": "จำนวน 30 ข้อ • เวลา 90 นาที",
+          "link": "https://drive.google.com/drive/folders/1qywx8lU6ilVCEdS6_IypR0jm0txg5mB4?usp=drive_link"
+        },
+        {
+          "name": "วิชาสามัญคณิตศาสตร์ 2",
+          "meta": "จำนวน 30 ข้อ • เวลา 90 นาที",
+          "link": "https://drive.google.com/drive/folders/1axWpGK2AzlURNKxuXV5ZCVYWfu9gwuSA?usp=drive_link"
+        },
+        {
+          "name": "Mock Test เพิ่มเติม",
+          "meta": "จำนวน 30 ข้อ • เวลา 90 นาที",
+          "link": "https://drive.google.com/drive/folders/1HuuHY8WOrVvC-4fulZrJjq9VCc5tH3u9?usp=drive_link"
+        }
+      ]
+    },
+    "extra": {
+      "title": "คลังข้อสอบเพิ่มเติม & สอวน.",
+      "subtitle": "โจทย์แข่งขันระดับชาติและนานาชาติ สำหรับผู้ที่ต้องการความท้าทาย",
+      "items": [
+        {
+          "name": "ข้อสอบคัดเลือกสอวน.คณิตศาสตร์ค่าย 1",
+          "meta": "จำนวน 30 ข้อ • เวลา 180 นาที",
+          "link": "https://www.posn.or.th/projects/academic-olympiad/mo/examination/"
+        },
+        {
+          "name": "สมาคมคณิตศาสตร์ ม.ปลาย",
+          "meta": "จำนวน 25 ข้อ • เวลา 180 นาที",
+          "link": "https://www.mathassociation.or.th/bookshelf/examStore"
+        },
+        {
+          "name": "สมาคมคณิตศาสตร์ ม.ต้น",
+          "meta": "จำนวน 25 ข้อ • เวลา 180 นาที",
+          "link": "https://www.mathassociation.or.th/bookshelf/examStore"
+        },
+        {
+          "name": "ข้อสอบ ASMOSPP",
+          "meta": "จำนวน 25 ข้อ • เวลา 90 นาที",
+          "link": "https://asmopssthailand.com/exam-hub"
+        },
+        {
+          "name": "PSU Math Competition",
+          "meta": "จำนวน 40 ข้อ • เวลา 180 นาที",
+          "link": "https://pmc.sci.psu.ac.th/mock-exam/"
+        },
+        {
+          "name": "ข้อสอบตอบปัญหาคณิตศาสตร์ PSU",
+          "meta": "จำนวน 25 ข้อ • เวลา 90 นาที",
+          "link": "https://drive.google.com/file/d/1zYVYLSr8QgITbrMKWOd-B8dfYs5b3145/view?usp=drive_link"
+        }
+        
+      ]
+    }
+  },
+  "summaryData": {
+    "m_junior": [
+      {
+        "chapter": "บทที่ 1: พีชคณิตพื้นฐาน & สมการเชิงเส้น",
+        "file": "Summary_Math_M1_Algebra.pdf",
+        "link": "https://drive.google.com/file/d/YOUR_SUMMARY_LINK_1/view"
+      },
+      {
+        "chapter": "บทที่ 2: เรขาคณิตวิเคราะห์ & วงกลม",
+        "file": "Summary_Math_M2_Geometry.pdf",
+        "link": "https://drive.google.com/file/d/YOUR_SUMMARY_LINK_2/view"
+      }
+    ],
+    "m_senior": [
+      {
+        "chapter": "บทที่ 1: เซต ตรรกศาสตร์ และระบบจำนวนจริง",
+        "file": "Summary_Math_M4_Logic.pdf",
+        "link": "https://drive.google.com/file/d/YOUR_SUMMARY_LINK_3/view"
+      }
+    ],
+    "extra": [
+      {
+        "chapter": "หัวข้อพิเศษ: ทฤษฎีจำนวน (Number Theory)",
+        "file": "Summary_Math_Extra_NumberTheory.pdf",
+        "link": "https://drive.google.com/file/d/YOUR_SUMMARY_LINK_4/view"
+      }
+    ],
+    "textbook": {
+      "m_junior": [
+        {
+          "chapter": "หนังสือเรียนรายวิชาพื้นฐาน คณิตศาสตร์ ม.1 เล่ม 1",
+          "link": "https://example.com/textbook-m1.pdf"
+        },
+        {
+          "chapter": "หนังสือเรียนรายวิชาพื้นฐาน คณิตศาสตร์ ม.2 เล่ม 1",
+          "link": "https://example.com/textbook-m2.pdf"
+        }
+      ],
+      "m_senior": [
+        {
+          "chapter": "หนังสือเรียนรายวิชาพื้นฐาน คณิตศาสตร์ ม.4",
+          "link": "https://example.com/textbook-m4.pdf"
+        },
+        {
+          "chapter": "หนังสือเรียนรายวิชาเพิ่มเติม คณิตศาสตร์ ม.5 เล่ม 1",
+          "link": "https://example.com/textbook-m5.pdf"
+        }
+      ]
+    }
+  }
+}

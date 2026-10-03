@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMA คณิต คิดสนุก</title>
+  
+  <!-- Google Fonts: Prompt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="networkCanvas"></canvas>
+  
+
+
+  <!-- Animated Background Blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <!-- Main Sticky Navbar -->
+  <nav class="main-navbar">
+    <div class="nav-brand" onclick="showPage('page1')">
+      ✨ SMA คณิต คิดสนุก
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <div class="nav-links">
+      <button class="nav-item active" id="nav-page1" onclick="showPage('page1')">หน้าแรก</button>
+      <button class="nav-item" id="nav-page2" onclick="showPage('page2')">สรุปคณิตศาสตร์</button>
+      <button class="nav-item" id="nav-page4" onclick="showPage('page4')">Daily Problem</button>
+      <button class="nav-item" id="nav-page3" onclick="showPage('page3')">คลังข้อสอบ</button>
+    </div>
+
+    <!-- Mobile Hamburger Button -->
+    <button class="hamburger-btn" onclick="toggleMobileNav(event)">☰</button>
+
+    <!-- Mobile Collapsible Nav Drawer -->
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+      <button class="nav-item active" id="mob-page1" onclick="showPage('page1')">หน้าแรก</button>
+      <button class="nav-item" id="mob-page2" onclick="showPage('page2')">สรุปคณิตศาสตร์</button>
+      <button class="nav-item" id="mob-page4" onclick="showPage('page4')">Daily Problem</button>
+      <button class="nav-item" id="mob-page3" onclick="showPage('page3')">คลังข้อสอบ</button>
+    </div>
+  </nav>
+
+  <!-- PAGE 1: MAIN MENU (Nova Corps Tri-Circle V-Shape) -->
+  <div id="page1" class="page active">
+    <div class="app-container">
+      <h1 class="hero-title">SMA คณิต คิดสนุก</h1>
+      
+      <div class="tri-circle-wrapper">
+        <!-- SVG เส้นเชื่อมโยง V-Shape และวงแหวนประดับสไตล์ Nova Corps -->
+        <svg class="nova-lines-svg" viewBox="0 0 680 400" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.85"/>
+              <stop offset="50%" stop-color="#ec4899" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.85"/>
+            </linearGradient>
+          </defs>
+
+          <!-- เส้นเชื่อมโยง V-Shape (ปรับตำแหน่ง Y ให้ตรงกับกลางวงกลม) -->
+          <path d="M 102 110 L 340 230 L 578 110 Z" class="nova-connect-line" />
+
+          <!-- วงแหวนซ้อนหลังเมนูซ้าย (cy="110") -->
+          <circle cx="102" cy="110" r="55" class="nova-ring ring-outer" />
+          <circle cx="102" cy="110" r="68" class="nova-ring ring-dashed" />
+          
+          <!-- วงแหวนซ้อนหลังเมนูกลาง (cy="230") -->
+          <circle cx="340" cy="250" r="55" class="nova-ring ring-outer" />
+          <circle cx="340" cy="230" r="68" class="nova-ring ring-dashed" />
+          
+          <!-- วงแหวนซ้อนหลังเมนูขวา (cy="110") -->
+          <circle cx="578" cy="110" r="55" class="nova-ring ring-outer" />
+          <circle cx="578" cy="110" r="68" class="nova-ring ring-dashed" />
+        </svg>
+
+        <!-- ซ้าย: สรุปคณิตศาสตร์ -->
+        <div class="menu-item" onclick="showPage('page2')">
+          <div class="menu-circle">📚</div>
+          <div class="menu-label">สรุปคณิตศาสตร์</div>
+        </div>
+
+        <!-- กลาง: Daily Problem -->
+        <div class="menu-item center-item" onclick="showPage('page4')">
+          <div class="menu-circle">⚡</div>
+          <div class="menu-label">Daily Problem</div>
+        </div>
+
+        <!-- ขวา: คลังข้อสอบ -->
+        <div class="menu-item" onclick="showPage('page3')">
+          <div class="menu-circle">📝</div>
+          <div class="menu-label">คลังข้อสอบ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+<!-- PAGE 2: สรุปคณิตศาสตร์ -->
+<div id="page2" class="page">
+  <div class="app-container">
+    <div class="page2-header">
+      <h2 class="page2-title">สรุปคณิตศาสตร์</h2>
+      <div class="pill-nav">
+        <button class="pill-btn active">ม.ต้น</button>
+        <button class="pill-btn">ม.ปลาย</button>
+        <button class="pill-btn">เพิ่มเติม</button>
+        <button class="pill-btn">หนังสือเรียน</button>
+      </div>
+    </div>
+
+    <!-- ✏️ ใส่แค่บรรทัดนี้ลงไปเพื่อรองรับข้อมูลครับ -->
+    <div id="summary-cards-list"></div>
+
+  </div>
+</div>
+
+
+  <!-- PAGE 3: คลังข้อสอบ (ไม่มี Dropdown) -->
+  <div id="page3" class="page">
+    <div class="app-container">
+      <div class="exam-wrapper">
+        <div class="exam-top-bar">
+          <div class="exam-title">คลังข้อสอบ</div>
+          <div class="exam-pills">
+            <button class="exam-pill-btn active">ม.ต้น</button>
+            <button class="exam-pill-btn">ม.ปลาย</button>
+            <button class="exam-pill-btn">เพิ่มเติม</button>
+          </div>
+        </div>
+        
+        <div class="exam-glass-card">
+          <div class="exam-card-title">คลังข้อสอบระดับชั้น ม.ต้น</div>
+          <div class="exam-card-subtitle">เลือกหัวข้อแบบฝึกหัดหรือชุดข้อสอบเพื่อเริ่มต้นฝึกทำโจทย์</div>
+          
+          <div class="exam-grid">
+            <div class="exam-item-card">
+              <div class="exam-item-name">ชุดข้อสอบเตรียมอุดมศึกษา 2567</div>
+              <div class="exam-item-meta">จำนวน 30 ข้อ • เวลา 120 นาที</div>
+            </div>
+            <div class="exam-item-card">
+              <div class="exam-item-name">ชุดข้อสอบ MWIT / KOSEN</div>
+              <div class="exam-item-meta">จำนวน 25 ข้อ • เวลา 90 นาที</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: DAILY PROBLEM -->
+  <div id="page4" class="page">
+    <div class="app-layout">
+      <!-- Glassmorphism Left Sidebar -->
+      <aside class="glass-sidebar">
+        <div class="brand-logo-circle">
+          <img src="/images/logoSMA.jpg" alt="Logo">
+        </div>
+        <button class="side-menu-btn active">
+          <span>รวม</span>
+        </button>
+        <button class="side-menu-btn">
+          <span>ม.ต้น</span>
+        </button>
+        <button class="side-menu-btn">
+          <span>ม.ปลาย</span>
+        </button>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="content-container">
+        <div class="daily-title-group">
+          <h1>Daily <span>Problem</span></h1>
+          <div class="daily-meta-bar">
+            <span>ประจำวันที่ 3 ตุลาคม 2569</span>
+            <span class="meta-badge">หมวด: รวม</span>
+          </div>
+        </div>
+
+        <div class="glass-problem-card">
+          <div class="card-top-info">
+            <div class="level-tag">โจทย์ระดับชั้น ม.ปลาย</div>
+            <div class="streak-tag">🔥 Streak 3 วัน</div>
+          </div>
+
+          <div class="problem-statement">
+            1. กำหนดให้ <span id="math1"></span> เป็นจำนวนจริงที่เป็นคำตอบของสมการ โดยที่ <span id="math2"></span>
+          </div>
+
+          <div class="glass-math-box" id="mathEq"></div>
+
+          <div class="problem-statement" style="font-weight: 700; color: #111;">
+            จงหาค่าของ <span id="math3"></span>
+          </div>
+
+          <div class="answer-section">
+            <div class="answer-label">ตอบคำถามของคุณ:</div>
+            <form class="answer-form" onsubmit="event.preventDefault();">
+              <input type="text" class="glass-input" placeholder="กรอกคำตอบของคุณที่นี่...">
+              <button class="btn-submit" type="submit">ส่งคำตอบ</button>
+            </form>
+          </div>
+        </div>
+
+        <button class="btn-hint-glass">💡 ต้องการคำใบ้?</button>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      const activeNav = document.getElementById('nav-' + pageId);
+      if (activeNav) activeNav.classList.add('active');
+
+      const mobNav = document.getElementById('mob-' + pageId);
+      if (mobNav) mobNav.classList.add('active');
+
+      const drawer = document.getElementById('mobileDrawer');
+      if (drawer) drawer.classList.remove('show');
+    }
+
+    function toggleMobileNav(e) {
+      e.stopPropagation();
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.toggle('show');
+    }
+
+    document.addEventListener('click', (e) => {
+      const drawer = document.getElementById('mobileDrawer');
+      if (drawer && drawer.classList.contains('show')) {
+        if (!drawer.contains(e.target) && !e.target.classList.contains('hamburger-btn')) {
+          drawer.classList.remove('show');
+        }
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof katex !== 'undefined') {
+        katex.render("a, b", document.getElementById('math1'));
+        katex.render("a > b", document.getElementById('math2'));
+        katex.render("10 = |2x + 3 + |x^2 - 3x + 5||", document.getElementById('mathEq'), { displayMode: true });
+        katex.render("a^2 + ab + 2b", document.getElementById('math3'));
+      }
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,920 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Prompt', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #cbe3ff 0%, #e2d3ff 40%, #f6cefc 80%, #d8e5ff 100%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  color: #2c2c2c;
+}
+
+/* Background Blobs */
+.bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.blob-1 {
+  width: clamp(250px, 40vw, 450px);
+  height: clamp(250px, 40vw, 450px);
+  background: rgba(168, 182, 255, 0.7);
+  top: -50px;
+  left: -50px;
+}
+
+.blob-2 {
+  width: clamp(300px, 50vw, 550px);
+  height: clamp(300px, 50vw, 550px);
+  background: rgba(225, 172, 255, 0.6);
+  bottom: -100px;
+  right: -50px;
+}
+
+/* Top Navigation Bar */
+.main-navbar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 12px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.nav-brand {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: 800;
+  color: #2b2b2b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-item {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  white-space: nowrap;
+}
+
+.nav-item:hover, .nav-item.active {
+  background: #8b5cf6;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Mobile Hamburger Toggle */
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #2b2b2b;
+  padding: 4px 8px;
+}
+
+/* Mobile Nav Drawer */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  top: 55px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  z-index: 200;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 180px;
+}
+
+.mobile-nav-drawer.show {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+
+.mobile-nav-drawer .nav-item {
+  width: 100%;
+  text-align: left;
+}
+
+/* Container Area */
+.app-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+  min-height: calc(100vh - 60px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30px 15px;
+}
+
+.page {
+  display: none;
+  width: 100%;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PAGE 1: Nova Corps Tri-Circle V-Shape Layout */
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  text-shadow: 0 2px 10px rgba(255,255,255,0.8);
+  margin-bottom: clamp(30px, 6vw, 60px);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.tri-circle-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 30%;
+  position: relative;
+  z-index: 2;
+}
+
+.menu-item.center-item {
+  transform: translateY(clamp(35px, 9vw, 85px));
+}
+
+.menu-item:hover {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.menu-item.center-item:hover {
+  transform: translateY(calc(clamp(35px, 9vw, 85px) - 8px)) scale(1.05);
+}
+
+.menu-circle {
+  width: clamp(80px, 20vw, 150px);
+  height: clamp(80px, 20vw, 150px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 15px 35px rgba(123, 58, 255, 0.15),
+              inset 0 0 20px rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  transition: all 0.3s ease;
+}
+
+.menu-label {
+  font-size: clamp(0.75rem, 2.2vw, 1.2rem);
+  font-weight: 700;
+  color: #222;
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(255,255,255,0.8);
+  white-space: nowrap;
+}
+
+/* PAGE 2: สรุปคณิตศาสตร์ */
+.page2-header {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.page2-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.pill-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.pill-btn {
+  background: rgba(139, 92, 246, 0.2);
+  color: #5b21b6;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 700;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pill-btn.active, .pill-btn:hover {
+  background: #8b5cf6;
+  color: white;
+  border-color: #8b5cf6;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.glass-card {
+  width: 100%;
+  min-height: 280px;
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  padding: clamp(20px, 4vw, 35px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-topic {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 800;
+  color: #222;
+}
+
+.download-link {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* PAGE 3: คลังข้อสอบ */
+.exam-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.exam-top-bar {
+  width: 100%;
+  background: rgba(188, 160, 255, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px 20px 0 0;
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: none;
+}
+
+.exam-title {
+  font-size: clamp(1.3rem, 3.2vw, 1.7rem);
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.exam-pills {
+  display: flex;
+  gap: 10px;
+}
+
+.exam-pill-btn {
+  background: rgba(255, 255, 255, 0.5);
+  color: #4c1d95;
+  padding: 8px 22px;
+  border-radius: 20px;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exam-pill-btn.active, .exam-pill-btn:hover {
+  background: #7c3aed;
+  color: white;
+  border-color: #7c3aed;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+}
+
+.exam-glass-card {
+  width: 100%;
+  min-height: 350px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 0 0 20px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-top: none;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  padding: clamp(20px, 4vw, 35px);
+}
+
+.exam-card-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  margin-bottom: 8px;
+}
+
+.exam-card-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 25px;
+}
+
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.exam-item-card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.exam-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.exam-item-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #2e1065;
+  margin-bottom: 6px;
+}
+
+.exam-item-meta {
+  font-size: 0.88rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* PAGE 4: Daily Problem */
+.app-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+}
+
+.glass-sidebar {
+  width: 100px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  flex-shrink: 0;
+}
+
+.brand-logo-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #7b3aff;
+  box-shadow: 0 4px 15px rgba(123, 58, 255, 0.1);
+  margin-bottom: 10px;
+}
+
+.side-menu-btn {
+  width: 68px;
+  height: 68px;
+  border-radius: 35px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #705cb8;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.side-menu-btn.active {
+  background: linear-gradient(135deg, #8d5eff, #6c32ff);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 20px rgba(108, 50, 255, 0.3);
+}
+
+.content-container {
+  flex: 1;
+  padding: 35px 20px 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.daily-title-group {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.daily-title-group h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  line-height: 1.1;
+}
+
+.daily-title-group h1 span {
+  color: #8338ec;
+}
+
+.daily-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.meta-badge {
+  background: rgba(131, 56, 236, 0.12);
+  color: #7028d4;
+  padding: 3px 14px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.glass-problem-card {
+  width: 100%;
+  max-width: 820px;
+  background: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05),
+              inset 0 0 15px rgba(255, 255, 255, 0.5);
+  padding: clamp(20px, 4vw, 38px);
+  position: relative;
+}
+
+.card-top-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.level-tag {
+  background: rgba(131, 56, 236, 0.1);
+  color: #8338ec;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.streak-tag {
+  color: #ff8c00;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.problem-statement {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  line-height: 1.8;
+  color: #222;
+  font-weight: 500;
+}
+
+.glass-math-box {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 22px 15px;
+  margin: 22px 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.answer-section {
+  margin-top: 30px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+  padding-top: 22px;
+}
+
+.answer-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #553c9a;
+  margin-bottom: 12px;
+}
+
+.answer-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.glass-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  outline: none;
+  color: #333;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #8d5eff, #6c32ff);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(108, 50, 255, 0.28);
+}
+
+.btn-hint-glass {
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #6c32ff;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: block;
+  }
+
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .glass-sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    padding: 12px 15px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .brand-logo-circle {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+  }
+
+  .side-menu-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .exam-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .exam-pills {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .answer-form {
+    flex-direction: column;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+/* Styling สำหรับกรอบสรุปคณิตศาสตร์แบบการ์ดใหญ่ใบเดียว */
+/* ปิดการยืดความสูงของการ์ด ให้สูงตามเนื้อหาจริง + ขยายกว้างเต็มพื้นที่ */
+.glass-card.summary-list-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important; /* ดึงทุกบทขึ้นมาเรียงต่อกันจากด้านบน */
+  height: auto !important;                 /* ยกเลิกความสูงเดิมที่ยืดการ์ด */
+  min-height: unset !important;            /* ยกเลิก min-height เดิม */
+  padding: 20px 28px !important;
+  gap: 0 !important;                       /* ไม่อนุญาตให้มีระยะห่างส่วนเกิน */
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* จัดแถวแต่ละบทให้อยู่ชิดกัน และดันปุ่ม Download ไปขวาสุด */
+.summary-item-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 10px 0 !important;            /* ระยะห่างระหว่างบทแบบเกือบชิดกันกำลังสวย */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important; /* เส้นแบ่งบางๆ */
+  width: 100% !important;
+}
+
+.summary-item-row:last-child {
+  border-bottom: none !important;        /* บทสุดท้ายไม่มีเส้นใต้ */
+}
+
+/* ชื่อบทฝั่งซ้าย */
+.summary-item-row .card-topic {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+  margin: 0 !important;
+}
+
+/* ปุ่ม Download ดันไปชิดขวาสุด */
+.summary-item-row .download-link {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  text-decoration: none !important;
+  margin-left: auto !important;          /* ดันไปชิดขวา */
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  transition: background-color 0.2s !important;
+}
+
+.summary-item-row .download-link:hover {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ==========================================
+   Responsive สำหรับปุ่มและรายการสรุปบทเรียน
+   ========================================== */
+
+/* 1. จัดแถบปุ่ม (Pill Nav) ให้เลื่อนแนวนอนได้บนมือถือโดยไม่ล้นจอ */
+.pill-nav {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;            /* ให้เลื่อนแนวนอนได้เมื่อปุ่มล้น */
+  padding-bottom: 8px;         /* เผื่อพื้นที่ให้ Scrollbar */
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+/* ป้องกันปุ่มโดนบีบจนข้อความตกบรรทัด */
+.pill-btn {
+  flex-shrink: 0;              /* ห้ามบีบขนาดปุ่ม */
+  white-space: nowrap;          /* ข้อความไม่ขึ้นบรรทัดใหม่ */
+  padding: 8px 18px;
+}
+
+/* ซ่อน Scrollbar ที่ดูไม่สวยงาม */
+.pill-nav::-webkit-scrollbar {
+  display: none;
+}
+.pill-nav {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 2. Responsive ปรับขนาดและการจัดวางบนมือถือ (หน้าจอแคบกว่า 600px) */
+@media (max-width: 600px) {
+  .glass-card.summary-list-card {
+    padding: 16px 18px !important;
+  }
+
+  .summary-item-row {
+    padding: 12px 0 !important;
+    gap: 10px !important;
+  }
+
+  .summary-item-row .card-topic {
+    font-size: 0.88rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .summary-item-row .download-link {
+    font-size: 0.82rem !important;
+    padding: 4px 8px !important;
+    flex-shrink: 0 !important;  /* ป้องกันปุ่ม Download โดนบีบ */
+  }
+}
+
+/* Layout สำหรับจัดวางการ์ดแบบซ้าย-ขวา */
+.textbook-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* แบ่งเป็น 2 คอลัมน์เท่าๆ กัน */
+  gap: 20px;                             /* ระยะห่างระหว่างการ์ดซ้าย-ขวา */
+  width: 100%;
+  align-items: start;
+}
+
+/* บนจอมือถือ (กว้างไม่เกิน 768px) ให้กลับมาเรียงต่อกันบน-ล่าง */
+@media (max-width: 768px) {
+  .textbook-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.brand-logo-circle {
+  overflow: hidden; /* ตัดส่วนเกินของรูปให้เป็นวงกลมตามกล่อง */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ป้องกันรูปเบี้ยวหรือเสียสัดส่วน */
+}
+
+/* ==========================================
+   Background Network Canvas & Nova Corps Rings
+   ========================================== */
+
+/* Canvas เครือข่ายพื้นหลัง */
+#networkCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* SVG จัดวางซ้อนหลังเมนู V-Shape */
+.nova-lines-svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  max-width: 680px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* เส้นเชื่อมโยงวิ่งแบบประ */
+.nova-connect-line {
+  fill: none;
+  stroke: url(#lineGrad);
+  stroke-width: 2.5;
+  stroke-dasharray: 8 6;
+  animation: dashMove 25s linear infinite;
+}
+
+/* วงแหวนรอบเมนู */
+.nova-ring {
+  fill: none;
+  transform-origin: center;
+}
+
+.ring-outer {
+  stroke: rgba(139, 92, 246, 0.4);
+  stroke-width: 2;
+}
+
+.ring-dashed {
+  stroke: rgba(236, 72, 153, 0.5);
+  stroke-width: 1.5;
+  stroke-dasharray: 8 12;
+  animation: rotateRing 20s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes dashMove {
+  to { stroke-dashoffset: -1000; }
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ซ่อน SVG บนจอมือถือเล็ก เพื่อป้องกันเส้นเบี้ยว */
+@media (max-width: 500px) {
+  .nova-lines-svg {
+    display: none;
+  }
+}
+
+/* กำหนดให้ตัวกล่องเมนูสร้างระนาบชั้น */
+.tri-circle-wrapper {
+  position: relative;
+}
+
+/* ย้าย SVG วงแหวนไปไว้ด้านหลังสุดของคอนเทนเนอร์ */
+.nova-lines-svg {
+  z-index: 1;
+}
+
+/* ดันตัวปุ่มวงกลมให้อยู่ด้านหน้าวงแหวน */
+.menu-item {
+  position: relative;
+  z-index: 2;
+}
